@@ -24,7 +24,7 @@
       integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="scss/style.css" />
+    <link rel="stylesheet" type="text/css" href="scss/style.css" />
   </head>
   <body style="background-image: url(images/bg1.jpeg)">
     <section class="ftco-section img bg-hero">
@@ -162,7 +162,18 @@
         </div>
       </div>
     </section>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <div class="lottieWraper" id="player">
+      <lottie-player
+        autoplay
+        loop
+        mode="normal"
+        class="lottiePlayer"
+        style="width: 400px; height: 400px"
+      >
+      </lottie-player>
+    </div>
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"></script>
     <script>
       $(document).ready(function () {
         $("#submitBtn").click(function () {
@@ -192,8 +203,17 @@
           console.log(`object`, encrypted);
           if (encrypted) {
             alert(encrypted);
+            $("#player").addClass("true");
+            const player = document.querySelector("lottie-player");
+            player.load(
+              "https://assets4.lottiefiles.com/datafiles/Tj3Hd1X74Once2j/data.json"
+            );
           } else {
-            alert("Better Luck Next Time");
+            $("#player").addClass("true");
+            const player = document.querySelector("lottie-player");
+            player.load(
+              "https://assets3.lottiefiles.com/private_files/lf30_no5ymi8c.json"
+            );
           }
         });
       });

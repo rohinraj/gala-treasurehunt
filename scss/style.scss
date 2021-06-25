@@ -39,7 +39,32 @@ h5,
   font-family: $font-primary;
   color: $black;
 }
-
+.lottieWraper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: #0001169c;
+  &.true {
+    display: flex;
+  }
+  .lottiePlayer {
+    .main .animation {
+      display: flex;
+      svg {
+        margin: auto !important;
+        height: unset !important;
+        width: unset !important;
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
 .bg-primary {
   background: $primary !important;
 }
