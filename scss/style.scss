@@ -65,6 +65,21 @@ h5,
     }
   }
 }
+.valueOnClipboard {
+  position: fixed;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  color: #fafafa;
+  text-align: center;
+  &.true {
+    display: flex;
+  }
+}
 .bg-primary {
   background: $primary !important;
 }
