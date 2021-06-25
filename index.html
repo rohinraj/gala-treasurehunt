@@ -181,10 +181,14 @@
               console.log("Data Send");
             }
           );
-          const encrypted = CryptoJS.AES.decrypt(
-            "U2FsdGVkX1/X6WlQ3ZlFyc4VBK0iHwTbZ5njde+ixhI=",
-            value3
-          ).toString(CryptoJS.enc.Utf8);
+          let encrypted = false;
+          try {
+            encrypted = CryptoJS.AES.decrypt(
+              "U2FsdGVkX1/xhDzg4OElbIHpiu0fIFxLw6VrWJuXNF55rqi6LEvWqMx9Ka8NxCAALiCqJ5InNBCMPyf0YMd3P5ycadJ9IsZQcQujisUzmd5Gd+shuN+mRALdFEoINIflmkjVbYN7GsOkJvX3IxBqhfJhzTICMT+rL4Zf2koSYVmvBJViVX/WIRSNTqss8wYHcNQIX3MjLNaZ+FyWKfVZZB962Mio4Gbg4G4tMgP6v0JKCO0J+84SGFZCR1S2bSmL+BrC+0hG7xwYjPF9EsGVNNcYYlDh7K3Pk3EyFtzL9TMy36kdtRUABCNFz93hpioW9cToSBYSQU13tDJEh3HEJJuGimv0MHQzADxdNJatMiZMXxtgwivdroj9rRTcJNVFnc5fT7Qblt/NN4CoXX3sCk+/ju5THvqkrlbtClfce/tidADpdVtuLSol0wMAgi3Kkihh81VfOKWemnm9u6XhsdUsCeaLkDrjJ7Lfk0ucz4bHOhX0swcg6upolqZc0nx/ZoLjGjYPgXe8XUhw2zO9thfGrVZ93Lko0yUKDJmlxcDB3peH9LYK1lP7X8A6FywTLqr3bS/pd1R+2xg5qBvrDUweNQii4XTrbxHzaoa3QGVw2hDynCe4s8ZHd01eY69/g99s2Y1Ho0m3+zqFNkzm2wlfnM8Tl9sMUmcqXIvtVIr6S3pGCDIBY3HkENTz9i/I0NbwcNHAMCrL9wnjWaTs6RKpk1sbArKsnO0ThY06iusYtSgJ80NQ23oyGyX1BgG92u196ziGxBBYACkmAQa1yhiBz9FZhwwGXanPivz2nOj/YVXeYXCzcpGxjQLW1cPbr4LTXer8SvPz5RJ96a/MbQ==",
+              value3.toUpperCase()
+            ).toString(CryptoJS.enc.Utf8);
+          } catch (error) {}
+
           console.log(`object`, encrypted);
           if (encrypted) {
             alert(encrypted);
@@ -194,6 +198,7 @@
         });
       });
     </script>
+
     <!--
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
