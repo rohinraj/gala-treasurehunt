@@ -1,10 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GALA</title>
+    <title>GALA-EXPLORA</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="scss/style.css" />
   </head>
-  <body></body>
+  <body style="background-image: url(images/bg1.jpeg)">
+    <section class="ftco-section img bg-hero">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center mb-5">
+            <h2 class="heading-section"><b>EXPLORA - </b>Task 4</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-11">
+            <div class="wrapper">
+              <div class="row no-gutters justify-content-between">
+                <div class="col-lg-6 d-flex align-items-stretch">
+                  <div class="info-wrap w-100 p-5">
+                    <h3 class="mb-4">Clue For the Task</h3>
+                    <div class="dbox w-100 d-flex align-items-start">
+                      <div
+                        class="
+                          icon
+                          d-flex
+                          align-items-center
+                          justify-content-center
+                        "
+                      >
+                        <span class="fa fa-map-marker"></span>
+                      </div>
+                      <div class="text pl-4">
+                        <p>
+                          <span>28.53813, 77.18997</span> New Delhi<br />
+                          Acess Code : 1,723.91 km
+                        </p>
+                      </div>
+                    </div>
+                    <div class="dbox w-100 d-flex align-items-start">
+                      <div
+                        class="
+                          icon
+                          d-flex
+                          align-items-center
+                          justify-content-center
+                        "
+                      >
+                        <span class="fa fa-map-marker"></span>
+                      </div>
+                      <div class="text pl-4">
+                        <p>
+                          <span>8.54286, 76.86423</span> Trivandrum<br />Acess
+                          Code : 504.90 km
+                        </p>
+                      </div>
+                    </div>
+                    <div class="dbox w-100 d-flex align-items-start">
+                      <div
+                        class="
+                          icon
+                          d-flex
+                          align-items-center
+                          justify-content-center
+                        "
+                      >
+                        <span class="fa fa-map-marker"></span>
+                      </div>
+                      <div class="text pl-4">
+                        <p>
+                          <span>22.58302, 88.45750</span> Kolkata<br />Acess
+                          Code : 1,569.42 km
+                        </p>
+                      </div>
+                    </div>
+                    <!--  -->
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="contact-wrap w-100 p-md-5 p-4">
+                    <h3 class="mb-4">Fill out This for Next Code</h3>
+                    <div id="form-message-warning" class="mb-4"></div>
+                    <div id="form-message-success" class="mb-4">
+                      Your message was sent, thank you!
+                    </div>
+                    <div id="contactForm" name="contactForm">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="Value1"
+                              id="Value1"
+                              placeholder="Team Code"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="Value2"
+                              id="Value2"
+                              placeholder="Your Name"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="Value3"
+                              id="Value3"
+                              placeholder="Answer"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <button
+                              type="submit"
+                              class="btn btn-primary"
+                              id="submitBtn"
+                            >
+                              Submit
+                            </button>
+                            <div class="submitting"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#submitBtn").click(function () {
+          console.log("Data Send");
+          const value1 = document.getElementById("Value1").value;
+          const value2 = document.getElementById("Value2").value;
+          const value3 = document.getElementById("Value3").value;
+          $.post(
+            "https://maker.ifttt.com/trigger/tressureForm/with/key/h71ZM2Q4oan_-uO_DGI__PFZQ4bA76K8feqeYhqRqsF",
+            {
+              value1: value1,
+              value2: value2,
+              value3: value3,
+            },
+            function (data, status) {
+              console.log("Data Send");
+            }
+          );
+          const encrypted = CryptoJS.AES.decrypt(
+            "U2FsdGVkX1/X6WlQ3ZlFyc4VBK0iHwTbZ5njde+ixhI=",
+            value3
+          ).toString(CryptoJS.enc.Utf8);
+          console.log(`object`, encrypted);
+          if (encrypted) {
+            alert(encrypted);
+          } else {
+            alert("Better Luck Next Time");
+          }
+        });
+      });
+    </script>
+    <!--
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/main.js"></script> -->
+  </body>
 </html>
