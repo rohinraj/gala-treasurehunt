@@ -172,7 +172,9 @@
       >
       </lottie-player>
     </div>
-
+    <div class="valueOnClipboard" id="copied">
+      The Value Stored To Your Clipboard
+    </div>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"></script>
     <script>
       $(document).ready(function () {
@@ -199,11 +201,13 @@
               value3.toUpperCase()
             ).toString(CryptoJS.enc.Utf8);
           } catch (error) {}
-
-          console.log(`object`, encrypted);
           if (encrypted) {
-            alert(encrypted);
+            navigator.clipboard.writeText(encrypted);
+            $("#copied").text(
+              encrypted + "  <==Check Your Clipboard The Text Copied There"
+            );
             $("#player").addClass("true");
+            $("#copied").addClass("true");
             const player = document.querySelector("lottie-player");
             player.load(
               "https://assets4.lottiefiles.com/datafiles/Tj3Hd1X74Once2j/data.json"
@@ -217,6 +221,23 @@
           }
         });
       });
+    </script>
+
+    <script>
+      function update(e) {
+        var x = e.clientX || e.touches[0].clientX;
+        var y = e.clientY || e.touches[0].clientY;
+
+        document
+          .getElementById("copied")
+          .style.setProperty("--cursorX", x + "px");
+        document
+          .getElementById("copied")
+          .style.setProperty("--cursorY", y + "px");
+      }
+
+      document.addEventListener("mousemove", update);
+      document.addEventListener("touchmove", update);
     </script>
 
     <!--
